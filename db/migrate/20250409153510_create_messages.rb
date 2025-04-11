@@ -1,9 +1,9 @@
 class CreateMessages < ActiveRecord::Migration[8.0]
   def change
     create_table :messages do |t|
-      t.integer :chat_id
-      t.integer :user_id
-      t.string :body
+      t.integer :chat_id, null: false
+      t.integer :user_id, null: false
+      t.string :body, null: false
 
       t.timestamps
     end
