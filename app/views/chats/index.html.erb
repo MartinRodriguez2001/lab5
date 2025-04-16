@@ -1,0 +1,14 @@
+<h1>Chats</h1>
+
+<div id="chats">
+  <% @chats.each do |chat| %>
+    <div>
+      <a href="/chats/<%= chat.id %>">
+        <p>
+            Chat ID: <%= chat.id %>
+        </p>
+        
+      </a>
+    </div>
+  <% end %>
+</div>
