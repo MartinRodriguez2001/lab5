@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get "home/index"
   get "messages/index"
   get "chats/index"
   get "users/index"
+  root "home#index"
+
 
   resources :users
   resources :chats

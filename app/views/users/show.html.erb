@@ -1,14 +1,14 @@
-<h1><%= @users.id %></h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Detalles del Usuario</h1>
 
-<p>
-    EMAIL: <%= @users.email %><br>
-</p>
-<p>
-    First name: <%= @users.first_name %><br>
-</p>
-<p>
-    Last name: <%= @users.last_name %><br>
-</p>
+  <div class="card">
+    <div class="card-body">
+      <p><strong>ID:</strong> <%= @users.id %></p>
+      <p><strong>Email:</strong> <%= @users.email %></p>
+      <p><strong>First Name:</strong> <%= @users.first_name %></p>
+      <p><strong>Last Name:</strong> <%= @users.last_name %></p>
+    </div>
+  </div>
 
-
-<%= link_to "Back", users_path %>
+  <%= link_to "Volver a la lista", users_path, class: "btn btn-primary mt-3" %>
+</div>

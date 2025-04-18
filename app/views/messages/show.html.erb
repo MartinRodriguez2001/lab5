@@ -1,13 +1,13 @@
-<h1><%= @messages.id %></h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Detalle del Mensaje</h1>
 
-<p>
-    User ID: <%= @messages.user_id %><br>
-    
-</p>
-<p>
-    Body: <%= @messages.body %><br>
-</p>
+  <div class="card">
+    <div class="card-body">
+      <p><strong>ID:</strong> <%= @messages.id %></p>
+      <p><strong>User ID:</strong> <%= @messages.user_id %></p>
+      <p><strong>Contenido:</strong> <%= @messages.body %></p>
+    </div>
+  </div>
 
-
-
-<%= link_to "Back", messages_path %>
+  <%= link_to "Volver a la lista", messages_path, class: "btn btn-primary mt-3" %>
+</div>

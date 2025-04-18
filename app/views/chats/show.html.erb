@@ -1,9 +1,13 @@
-<h1><%= @chats.id %></h1>
-<p>
-    Sender ID: <%= @chats.sender_id %><br>
-</p>
+<div class="container mt-5">
+  <h1 class="mb-4">Detalle del Chat</h1>
 
-    Receiver ID: <%= @chats.receiver_id %><br>
-</p>
+  <div class="card">
+    <div class="card-body">
+      <p><strong>ID:</strong> <%= @chats.id %></p>
+      <p><strong>Sender ID:</strong> <%= @chats.sender_id %></p>
+      <p><strong>Receiver ID:</strong> <%= @chats.receiver_id %></p>
+    </div>
+  </div>
 
-<%= link_to "Back", chats_path %>
+  <%= link_to "Volver a la lista", chats_path, class: "btn btn-primary mt-3" %>
+</div>

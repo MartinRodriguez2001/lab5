@@ -1,14 +1,13 @@
-<h1>Chats</h1>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Chats</h1>
 
-<div id="chats">
-  <% @chats.each do |chat| %>
-    <div>
-      <a href="/chats/<%= chat.id %>">
-        <p>
-            Chat ID: <%= chat.id %>
+  <div class="list-group">
+    <% @chats.each do |chat| %>
+      <%= link_to chat_path(chat), class: "list-group-item list-group-item-action" do %>
+        <p class="mb-0">
+          <strong>Chat ID:</strong> <%= chat.id %>
         </p>
-        
-      </a>
-    </div>
-  <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

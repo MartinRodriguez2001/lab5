@@ -1,13 +1,14 @@
-<h1>Users</h1>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Usuarios</h1>
 
-<div id="users">
-  <% @users.each do |user| %>
-    <div>
-      <a href="/users/<%= user.id %>">
-        <p>
-            User ID: <%= user.id %>
+  <div class="list-group">
+    <% @users.each do |user| %>
+      <%= link_to user_path(user), class: "list-group-item list-group-item-action" do %>
+        <p class="mb-0">
+          <strong>User ID:</strong> <%= user.id %><br>
+          <strong>Email:</strong> <%= user.email %>
         </p>
-      </a>
-    </div>
-  <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
