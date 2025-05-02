@@ -10,4 +10,12 @@
       <% end %>
     <% end %>
   </div>
+  <h1>Chats</h1>
+<%= link_to 'Add New Chat', new_chat_path %>
+<ul>
+  <% @chats.each do |chat| %>
+    <li>Chat: Sender ID <%= chat.sender_id %> → Receiver ID <%= chat.receiver_id %></li>
+  <% end %>
+</ul>
+
 </div>

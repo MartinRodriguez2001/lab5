@@ -10,4 +10,12 @@
       <% end %>
     <% end %>
   </div>
+  <h1>Messages</h1>
+<%= link_to 'Add New Message', new_message_path %>
+<ul>
+  <% @messages.each do |msg| %>
+    <li><strong><%= msg.user.first_name %></strong>: <%= msg.body %> (Chat #<%= msg.chat_id %>)</li>
+  <% end %>
+</ul>
+
 </div>

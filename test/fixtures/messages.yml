@@ -1,15 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  chat_id: 1
-  user_id: 1
   body: MyString
-  created_at: 2025-04-09 11:35:10
-  updated_at: 2025-04-09 11:35:10
+  user: one
+  chat: one
 
 two:
-  chat_id: 1
-  user_id: 1
   body: MyString
-  created_at: 2025-04-09 11:35:10
-  updated_at: 2025-04-09 11:35:10
+  user: two
+  chat: two
