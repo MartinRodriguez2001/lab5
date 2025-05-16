@@ -1,21 +1,25 @@
 <div class="container mt-5">
-  <h1 class="text-center mb-4">Chats</h1>
+  <h1 class="mb-4 text-center">Chats</h1>
 
-  <div class="list-group">
+  <%= link_to "Nuevo Chat", new_chat_path, class: "btn btn-success mb-3" %>
+
+  <ul class="list-group">
     <% @chats.each do |chat| %>
-      <%= link_to chat_path(chat), class: "list-group-item list-group-item-action" do %>
-        <p class="mb-0">
-          <strong>Chat ID:</strong> <%= chat.id %>
-        </p>
-      <% end %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>Chat #<%= chat.id %></strong><br>
+          <small>
+            Remitente: <%= chat.sender.first_name %> |
+            Receptor: <%= chat.receiver.first_name %>
+          </small>
+        </div>
+        <div>
+          <%= link_to "Ver", chat_path(chat), class: "btn btn-sm btn-primary me-2" %>
+          <%= link_to "Editar", edit_chat_path(chat), class: "btn btn-sm btn-warning" %>
+        </div>
+      </li>
     <% end %>
-  </div>
-  <h1>Chats</h1>
-<%= link_to 'Add New Chat', new_chat_path %>
-<ul>
-  <% @chats.each do |chat| %>
-    <li>Chat: Sender ID <%= chat.sender_id %> → Receiver ID <%= chat.receiver_id %></li>
-  <% end %>
-</ul>
+  </ul>
 
+  <%= link_to "Inicio", root_path, class: "btn btn-outline-primary mt-3" %>
 </div>

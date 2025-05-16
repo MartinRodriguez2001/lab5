@@ -3,11 +3,25 @@ class ChatsController < ApplicationController
     @chats = Chat.all
   end
   def show
-    @chats = Chat.find(params[:id])
+    @chat = Chat.find(params[:id])
   end
   def new
     @chat = Chat.new
   end
+
+  def edit
+    @chat = Chat.find(params[:id])
+  end
+  
+  def update
+    @chat = Chat.find(params[:id])
+    if @chat.update(chat_params)
+      redirect_to @chat, notice: "Chat updated successfully."
+    else
+      render :edit
+    end
+  end
+  
 
   def create
     @chat = Chat.new(chat_params)

@@ -1,13 +1,16 @@
 <div class="container mt-5">
   <h1 class="mb-4">Detalle del Mensaje</h1>
 
-  <div class="card">
+  <div class="card mb-4">
     <div class="card-body">
-      <p><strong>ID:</strong> <%= @messages.id %></p>
-      <p><strong>User ID:</strong> <%= @messages.user_id %></p>
-      <p><strong>Contenido:</strong> <%= @messages.body %></p>
+      <p><strong>ID:</strong> <%= @message.id %></p>
+      <p><strong>Autor:</strong> <%= @message.user.first_name %></p>
+      <p><strong>Chat:</strong> Chat #<%= @message.chat_id %></p>
+      <p><strong>Contenido:</strong> <%= @message.body %></p>
     </div>
   </div>
 
-  <%= link_to "Volver a la lista", messages_path, class: "btn btn-primary mt-3" %>
+  <%= link_to "Editar", edit_message_path(@message), class: "btn btn-warning" %>
+  <%= link_to "Volver", messages_path, class: "btn btn-secondary" %>
+  <%= link_to "Inicio", root_path, class: "btn btn-outline-primary" %>
 </div>

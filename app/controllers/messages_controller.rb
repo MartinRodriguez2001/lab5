@@ -3,11 +3,26 @@ class MessagesController < ApplicationController
     @messages = Message.all
   end
   def show
-    @messages = Message.find(params[:id])
+    @message = Message.find(params[:id])
   end
+  
   def new
     @message = Message.new
   end
+
+  def edit
+    @message = Message.find(params[:id])
+  end
+  
+  def update
+    @message = Message.find(params[:id])
+    if @message.update(message_params)
+      redirect_to @message, notice: "Message updated successfully."
+    else
+      render :edit
+    end
+  end
+  
 
   def create
     @message = Message.new(message_params)

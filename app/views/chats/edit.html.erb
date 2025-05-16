@@ -1,0 +1,15 @@
+<h1>Editar Chat</h1>
+
+<%= form_with model: @chat, local: true do |form| %>
+  <div>
+    <%= form.label :sender_id %><br>
+    <%= form.number_field :sender_id %>
+  </div>
+
+  <div>
+    <%= form.label :receiver_id %><br>
+    <%= form.number_field :receiver_id %>
+  </div>
+
+  <%= form.submit "Guardar cambios" %>
+<% end %>

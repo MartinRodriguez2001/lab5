@@ -1,14 +1,32 @@
 <div class="container mt-5">
   <h1 class="mb-4">Detalles del Usuario</h1>
 
-  <div class="card">
+  <div class="card mb-4">
     <div class="card-body">
-      <p><strong>ID:</strong> <%= @users.id %></p>
-      <p><strong>Email:</strong> <%= @users.email %></p>
-      <p><strong>First Name:</strong> <%= @users.first_name %></p>
-      <p><strong>Last Name:</strong> <%= @users.last_name %></p>
+      <p><strong>ID:</strong> <%= @user.id %></p>
+      <p><strong>Nombre:</strong> <%= @user.first_name %> <%= @user.last_name %></p>
+      <p><strong>Email:</strong> <%= @user.email %></p>
     </div>
   </div>
 
-  <%= link_to "Volver a la lista", users_path, class: "btn btn-primary mt-3" %>
+  <h4>Chats Participantes</h4>
+  <ul class="list-group mb-4">
+    <% @user.sent_chats.each do |chat| %>
+      <li class="list-group-item">Enviado → Chat ID <%= chat.id %></li>
+    <% end %>
+    <% @user.received_chats.each do |chat| %>
+      <li class="list-group-item">Recibido ← Chat ID <%= chat.id %></li>
+    <% end %>
+  </ul>
+
+  <h4>Mensajes Enviados</h4>
+  <ul class="list-group mb-4">
+    <% @user.sent_messages.each do |msg| %>
+      <li class="list-group-item"><%= msg.body %> (Chat #<%= msg.chat_id %>)</li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Editar", edit_user_path(@user), class: "btn btn-warning" %>
+  <%= link_to "Volver", users_path, class: "btn btn-secondary" %>
+  <%= link_to "Inicio", root_path, class: "btn btn-outline-primary" %>
 </div>

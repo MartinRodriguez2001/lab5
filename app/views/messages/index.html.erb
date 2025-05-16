@@ -1,21 +1,23 @@
 <div class="container mt-5">
-  <h1 class="text-center mb-4">Mensajes</h1>
+  <h1 class="mb-4 text-center">Mensajes</h1>
 
-  <div class="list-group">
+  <%= link_to "Nuevo Mensaje", new_message_path, class: "btn btn-success mb-3" %>
+
+  <ul class="list-group">
     <% @messages.each do |message| %>
-      <%= link_to message_path(message), class: "list-group-item list-group-item-action" do %>
-        <p class="mb-0">
-          <strong>Message ID:</strong> <%= message.id %>
-        </p>
-      <% end %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>Mensaje #<%= message.id %></strong><br>
+          <%= truncate(message.body, length: 80) %><br>
+          <small>Autor: <%= message.user.first_name %> | Chat ID: <%= message.chat_id %></small>
+        </div>
+        <div>
+          <%= link_to "Ver", message_path(message), class: "btn btn-sm btn-primary me-2" %>
+          <%= link_to "Editar", edit_message_path(message), class: "btn btn-sm btn-warning" %>
+        </div>
+      </li>
     <% end %>
-  </div>
-  <h1>Messages</h1>
-<%= link_to 'Add New Message', new_message_path %>
-<ul>
-  <% @messages.each do |msg| %>
-    <li><strong><%= msg.user.first_name %></strong>: <%= msg.body %> (Chat #<%= msg.chat_id %>)</li>
-  <% end %>
-</ul>
+  </ul>
 
+  <%= link_to "Inicio", root_path, class: "btn btn-outline-primary mt-3" %>
 </div>

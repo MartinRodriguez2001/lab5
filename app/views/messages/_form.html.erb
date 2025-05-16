@@ -1,0 +1,22 @@
+<%= form_with model: @message do |f| %>
+  <% if @message.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @message.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :chat_id %>
+  <%= f.collection_select :chat_id, Chat.all, :id, :id %><br>
+
+  <%= f.label :user_id %>
+  <%= f.collection_select :user_id, User.all, :id, :first_name %><br>
+
+  <%= f.label :body %>
+  <%= f.text_area :body %><br>
+
+  <%= f.submit %>
+<% end %>

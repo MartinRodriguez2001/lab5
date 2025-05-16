@@ -1,13 +1,22 @@
 <div class="container mt-5">
-  <h1 class="mb-4">Detalle del Chat</h1>
+  <h1 class="mb-4">Detalles del Chat</h1>
 
-  <div class="card">
+  <div class="card mb-4">
     <div class="card-body">
-      <p><strong>ID:</strong> <%= @chats.id %></p>
-      <p><strong>Sender ID:</strong> <%= @chats.sender_id %></p>
-      <p><strong>Receiver ID:</strong> <%= @chats.receiver_id %></p>
+      <p><strong>ID:</strong> <%= @chat.id %></p>
+      <p><strong>Remitente:</strong> <%= @chat.sender.first_name %></p>
+      <p><strong>Receptor:</strong> <%= @chat.receiver.first_name %></p>
     </div>
   </div>
 
-  <%= link_to "Volver a la lista", chats_path, class: "btn btn-primary mt-3" %>
+  <h4>Mensajes del Chat</h4>
+  <ul class="list-group mb-4">
+    <% @chat.messages.each do |msg| %>
+      <li class="list-group-item"><strong><%= msg.user.first_name %>:</strong> <%= msg.body %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Editar", edit_chat_path(@chat), class: "btn btn-warning" %>
+  <%= link_to "Volver", chats_path, class: "btn btn-secondary" %>
+  <%= link_to "Inicio", root_path, class: "btn btn-outline-primary" %>
 </div>

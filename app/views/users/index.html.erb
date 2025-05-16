@@ -1,20 +1,20 @@
 <div class="container mt-5">
-  <h1 class="text-center mb-4">Usuarios</h1>
+  <h1 class="mb-4 text-center">Usuarios</h1>
 
-  <div class="list-group">
+  <%= link_to "Crear Usuario", new_user_path, class: "btn btn-success mb-3" %>
+
+  <ul class="list-group">
     <% @users.each do |user| %>
-      <%= link_to user_path(user), class: "list-group-item list-group-item-action" do %>
-        <p class="mb-0">
-          <strong>User ID:</strong> <%= user.id %><br>
-          <strong>Email:</strong> <%= user.email %>
-        </p>
-      <% end %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong><%= user.first_name %> <%= user.last_name %></strong> - <%= user.email %>
+          <br><small>Mensajes enviados: <%= user.sent_messages.count %></small>
+        </div>
+        <div>
+          <%= link_to "Ver", user_path(user), class: "btn btn-sm btn-primary" %>
+          <%= link_to "Editar", edit_user_path(user), class: "btn btn-sm btn-warning" %>
+        </div>
+      </li>
     <% end %>
-  </div>
-  <%= link_to 'Add New User', new_user_path %>
-<ul>
-  <% @users.each do |user| %>
-    <li><%= user.first_name %> (<%= user.email %>)</li>
-  <% end %>
-</ul>
+  </ul>
 </div>
