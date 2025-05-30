@@ -9,8 +9,6 @@
       <p><strong>Contenido:</strong> <%= @message.body %></p>
     </div>
   </div>
-
-  <%= link_to "Editar", edit_message_path(@message), class: "btn btn-warning" %>
   <%= link_to "Volver", messages_path, class: "btn btn-secondary" %>
   <%= link_to "Inicio", root_path, class: "btn btn-outline-primary" %>
 </div>

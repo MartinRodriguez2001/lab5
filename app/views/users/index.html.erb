@@ -11,9 +11,17 @@
           <br><small>Mensajes enviados: <%= user.sent_messages.count %></small>
         </div>
         <div>
-          <%= link_to "Ver", user_path(user), class: "btn btn-sm btn-primary" %>
-          <%= link_to "Editar", edit_user_path(user), class: "btn btn-sm btn-warning" %>
-        </div>
+  <%= link_to "Ver", user_path(user), class: "btn btn-sm btn-primary me-2" %>
+  <% if can? :edit, user %>
+    <%= link_to "Editar", edit_user_path(user), class: "btn btn-sm btn-warning me-2" %>
+  <% end %>
+  <% if can? :destroy, user %>
+  <%= link_to "Eliminar", user_path(user), data: { turbo_method: :delete, confirm: "¿Seguro que deseas eliminar este usuario?" }, class: "btn btn-sm btn-danger" %>
+<% end %>
+
+</div>
+
+
       </li>
     <% end %>
   </ul>

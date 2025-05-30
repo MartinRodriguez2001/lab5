@@ -1,31 +1,39 @@
 class MessagesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @messages = Message.all
   end
   def show
     @message = Message.find(params[:id])
   end
-  
+
   def new
     @message = Message.new
   end
 
   def edit
-    @message = Message.find(params[:id])
   end
-  
+
   def update
-    @message = Message.find(params[:id])
     if @message.update(message_params)
       redirect_to @message, notice: "Message updated successfully."
     else
       render :edit
     end
   end
-  
+
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
+    redirect_to messages_path, notice: "Mensaje eliminado correctamente."
+  end
+
+
 
   def create
     @message = Message.new(message_params)
+    @message.user = current_user
     if @message.save
       redirect_to messages_path, notice: "Message created successfully."
     else
@@ -35,6 +43,6 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:body, :user_id, :chat_id)
+    params.require(:message).permit(:body, :chat_id)
   end
 end
