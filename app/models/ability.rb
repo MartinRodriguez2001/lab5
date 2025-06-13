@@ -4,15 +4,22 @@ class Ability
   def initialize(user)
     return unless user.present?
 
-    can :read, :all
-
+    # Mensajes
     can :create, Message
-    can [ :update, :destroy ], Message, user_id: user.id
+    can [ :read, :update, :destroy ], Message, user_id: user.id
 
-    can [ :update, :edit, :destroy ], User, id: user.id
+    can :read, Message, chat: { sender_id:   user.id }
+    can :read, Message, chat: { receiver_id: user.id }
 
+
+    # Usuarios
+    can [ :read, :update, :destroy ], User, id: user.id
+
+    # Chats
     can :create, Chat
-    can [ :update, :edit, :destroy ], Chat, sender_id: user.id
-can [ :update, :edit, :destroy ], Chat, receiver_id: user.id
+    can :read,   Chat, sender_id: user.id
+    can :read,   Chat, receiver_id: user.id
+
+    can [ :update, :destroy ], Chat, sender_id: user.id
   end
 end

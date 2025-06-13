@@ -7,24 +7,27 @@
     <% @chats.each do |chat| %>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <div>
-          <strong>Chat #<%= chat.id %></strong><br>
+          <strong>
+            <%= chat.other_participant(current_user).full_name %>
+          </strong>
+          <br>
           <small>
-            Remitente: <%= chat.sender.first_name %> |
-            Receptor: <%= chat.receiver.first_name %>
+            Último mensaje: 
+            <%= chat.messages.last&.body&.truncate(30) || "—" %>
           </small>
+
         </div>
         <div>
-  <%= link_to "Ver", chat_path(chat), class: "btn btn-sm btn-primary me-2" %>
-  <% if can? :edit, chat %>
-    <%= link_to "Editar", edit_chat_path(chat), class: "btn btn-sm btn-warning me-2" %>
-  <% end %>
-  <% if can? :destroy, chat %>
-  <%= link_to "Eliminar", chat_path(chat), data: { turbo_method: :delete, confirm: "¿Seguro que deseas eliminar este chat?" }, class: "btn btn-sm btn-danger" %>
-<% end %>
-
-</div>
-
-
+          <%= link_to "Ver",  chat_path(chat),        class: "btn btn-sm btn-primary me-2" %>
+          <% if can? :edit,   chat %>
+            <%= link_to "Editar", edit_chat_path(chat), class: "btn btn-sm btn-warning me-2" %>
+          <% end %>
+          <% if can? :destroy, chat %>
+            <%= link_to "Eliminar", chat_path(chat),
+                        data: { turbo_method: :delete, confirm: "¿Seguro que deseas eliminar este chat?" },
+                        class: "btn btn-sm btn-danger" %>
+          <% end %>
+        </div>
       </li>
     <% end %>
   </ul>
